@@ -83,3 +83,17 @@ making_change.py [amount]`
    different amounts using the current coin. At that point, all we have to do is
    perform that loop for every single coin, and then return the answer in our
    cache for the original amount!
+
+<!-- 
+Planning:
+
+need change for:     | 0     1     5     10...   25...   50...   1.00
+_____________________|_______________________________________________________________
+[]                   | 1     0     0      0       0       0        0
+[1]                  | 1     1     1      1       1       1        1          
+[1, 5]               | 1     1     2      3       6      11       21         
+[1, 5, 10]           | 1     1     2      4      12      36        x
+[1, 5, 10, 25]       | 1     1     2      4       x       x        x          
+[1, 5, 10, 25, 50]   | 1     1     2      4       x       x      292          
+
+ -->

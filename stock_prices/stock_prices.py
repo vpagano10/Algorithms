@@ -4,37 +4,48 @@ import argparse
 
 
 # Kind of works but doesn not restrict the min value to come before the max value
-def find_max_profit(prices):
-    # get maximum in list
-    max_price = prices[1]
-    curr_max = max_price
-    for price in prices:
-        if price > curr_max:
-            curr_max = price
-    # get min_price in list, but must come before the max_price
-    min_price = prices[0]
-    curr_min = min_price
-    while prices.index(curr_min) < prices.index(curr_max):
-        for price in prices:
-            if price < curr_min:
-                curr_min = price
-    # subtract min_price from max_price
-    result = curr_max - curr_min
-    return result
+# def find_max_profit(prices):
+#     # get maximum in list
+#     max_price = prices[1]
+#     curr_max = max_price
+#     for price in prices:
+#         if price > curr_max:
+#             curr_max = price
+#     # get min_price in list, but must come before the max_price
+#     min_price = prices[0]
+#     curr_min = min_price
+#     while prices.index(curr_min) < prices.index(curr_max):
+#         for price in prices:
+#             if price < curr_min:
+#                 curr_min = price
+#     # subtract min_price from max_price
+#     result = curr_max - curr_min
+#     return result
 
 
 # ATTEMPT 2
-# def find_max_profit(prices):
+def find_max_profit(prices):
     # if less than 1 return -1 or something to indicate nothing available
-    # variable to find profit (subtract min for max) set min then max is min+1 by indexing prices array
-    # for items in the range of the prices array length
-    # make a new variable that checks the item + 1
-    # while that new variable is less than the prices array length
-    # make another profit checking variable that subs the new var index - item index
-    # if the new profit checker is now bigger than first max profit check, set it
-    # increase then item+1 variable by 1 to continue moving through the array
+    if len(prices) < 1:
+        return -1
+    # variable to find profit, set max = min+1 as indexes of the prices array
+    max_profit = prices[1] - prices[0]
+    # for prices in the range of the prices array length
+    for price in range(len(prices)):
+        # make a new variable that compares other prices in the array
+        compare_price = price + 1
+        # while that new variable is less than the prices array length
+        while compare_price < len(prices):
+            # make profit checking variable that checks new prices
+            profit = prices[compare_price] - prices[price]
+            # if the new profit checker is now bigger than first max profit check
+            if profit > max_profit:
+                # set new profit
+                max_profit = profit
+            # increase price check variable by 1 to continue moving through the array
+            compare_price += 1
     # return the reuslts for the max profit
-    # pass
+    return max_profit
 
 
 if __name__ == '__main__':

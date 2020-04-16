@@ -5,13 +5,25 @@ import sys
 
 def rock_paper_scissors(n):
     # variable results is an array
+    game_results = []
     # variable options that holds the available options
+    available_moves = ("rock", "paper", "scissors")
     # internal helper function that takes in original param and an array to collect the results that are then passed to results
-    #   if no entries just add the new empty array into results and get out of function
-    #   else for each option, set it to a variable and iterate through each one
-    #   recurse the helper function, adding the option intot the helper array
-    # call helper function then return results
-    pass
+
+    def rps_helper(n, result_collector):
+        # if there are results...
+        if result_collector >= 1:
+            # for each option, set it to a variable
+            for move in result_collector:
+                result_collector.append(move)
+                # recurse the helper func, adding the option into the helper array
+                rps_helper(n, result_collector)
+                # call helper function then return results
+        # else, no entries, add new empty array into results
+        else:
+            game_results = result_collector
+        return game_results
+    return game_results
 
 
 if __name__ == "__main__":
