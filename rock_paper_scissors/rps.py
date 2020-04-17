@@ -11,18 +11,15 @@ def rock_paper_scissors(n):
     # internal helper function that takes in original param and an array to collect the results that are then passed to results
 
     def rps_helper(n, result_collector):
-        # if there are results...
-        if result_collector >= 1:
-            # for each option, set it to a variable
-            for move in result_collector:
-                result_collector.append(move)
-                # recurse the helper func, adding the option into the helper array
-                rps_helper(n, result_collector)
-                # call helper function then return results
-        # else, no entries, add new empty array into results
+        if n == 0:
+            game_results.append(result_collector)
+            return
         else:
-            game_results = result_collector
-        return game_results
+            for move in range(len(available_moves)):
+                move = available_moves[move]
+                rps_helper(n-1, result_collector + [move])
+
+    rps_helper(n, [])
     return game_results
 
 
